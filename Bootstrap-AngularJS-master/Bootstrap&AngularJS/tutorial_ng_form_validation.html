@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<title>
+			custom filter
+		</title>
+		<script>
+			var myapp= angular.module("myapp",[]).controller("mycontroller",function($scope){
+					$scope.master={firstname:'raghu',lastname:'Nayudu'};
+					$scope.reset=function(){
+								$scope.user=angular.copy($scope.master);
+						}
+						$scope.reset();
+					
+				});
+		</script>
+	</head>
+	<body ng-app='myapp' ng-controller="mycontroller">
+		<form name='myform' nonvalidate>
+			Fisrt Name:<input name="Firstname" type='text' placeholder='Firstname' ng-model='user.firstname'><br>
+			<span ng-show='myform.Firstname.$invalid && myform.Firstname.$touched'>The name is required</span>
+			Last Name:<input name="Lastname"  type='text' placeholder='Lastname'  ng-model='user.lastname'><br>
+			<button type='button' ng-click="reset()">Submit</button>
+		</form>
+		<p>
+			{{user.firstname}}
+		</p>
+		<p>
+		  {{user.lastname}}
+		</P>
+	</body>
+</html>

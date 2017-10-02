@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<title>
+			custom filter
+		</title>
+		
+	</head>
+	<body>
+		<ul ng-app="mymodule" ng-controller='namesCtrl' >
+			<li ng-repeat='x in names' >
+				{{x | myfilter}}
+			</li>
+		</ul>
+		<script>
+		var app=angular.module("mymodule",[]);
+		app.filter("myfilter",function(){
+					return function(x){
+						var i,c,txt;
+						txt='';
+						for(i=0;i<x.length;i++)	{
+							c=x[i];
+							if(i%2==0){
+								c=c.toUpperCase();
+							}
+							txt+=c;
+						}
+						return txt;
+					};
+		});
+				app.controller('namesCtrl', function($scope) {
+				$scope.names = [
+									'Jani',
+									'Carl',
+									'Margareth',
+									'Hege',
+									'Joe',
+									'Gustav',
+									'Birgit',
+									'Mary',
+									'Kai'
+							];
+						});
+		</script>
+	</body>
+</html>

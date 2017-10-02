@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Tutorial 1</title>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</head>
+	<body ng-app="mymodule">
+		<div ng-controller="mycontroller">
+			<!--{{message}}
+			<br>
+			<br>
+			<input type="text" ng-model="message">
+			<br>
+			{{greeting}}
+			<input type="text" ng-model="message">
+			<br>-->
+			FirstName<input type="text" ng-model="employee.firstName">
+		
+			<br>
+			
+			<table border=1>
+			<tr>
+			<th>
+				FirstName
+			</th>
+			<th>
+				LastName
+			</th>
+			<th>
+				Gender
+			</th>
+			</tr>
+			<tr>
+			<td>
+				{{employee.firstName}}
+			</td>
+			<td>
+				{{employee.LastName}}
+			</td>
+			<td>
+				{{employee.Gender}}
+			</td>
+			</tr>
+			</table>
+			</div>
+	</body>
+</html>

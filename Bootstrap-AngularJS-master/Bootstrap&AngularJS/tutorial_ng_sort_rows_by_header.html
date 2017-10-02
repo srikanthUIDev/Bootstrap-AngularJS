@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/script4.js"></script>
+		<title>
+		Event_handling
+		</title>
+		<style>
+		table {
+				padding:0px;
+				font-family:arial;
+				border-collapse:collapse;
+			}
+			td{
+				padding:10px;
+				text-align:center;
+			}
+			tr:hover{
+				    background: #dadacc;
+
+			}
+			 th{
+				    padding: 10px;
+
+			}
+		</style>
+	</head>
+	<body ng-app="mymodule">
+		<div ng-controller="mycontroller"><!--ng-controller tells us which controller are we using-->
+		<input type='text' placeholder='Search items' ng-model='SearchText'>
+			<table border=1>
+				<thead>
+				<tr>
+					<th ng-click='reversecolumn("name")'>
+						Name
+					</th>
+					<th ng-click='reversecolumn("Director")'>
+						Director
+					</th>
+					<th ng-click='reversecolumn("Actor")'>
+						Actor
+					</th>
+					<th ng-click='reversecolumn("ReleaseDate")'><!--ng-click directive is responsible for event handling-->
+						Released Date
+					</th>
+					<th ng-click='reversecolumn("Price")'>
+						Price In $
+					</th>
+					<th ng-click='reversecolumn("Likes")'>
+						Likes
+					</th>
+					<th ng-click='reversecolumn("Dislikes")'>
+						Dislikes
+					</th>
+					<th> 
+						Like/Dislike
+					</th>
+				</tr>
+				</thead><!--end of the header-->
+				<tbody ng-repeat=" x in movies |orderBy:sortcolumn:reversesort | filter:SearchText"><!--orderby filter is responsible for sorting data-->
+				<tr>	
+					<td>{{x.Name| uppercase }}</td>
+					<td>{{x.Director | uppercase }}</td>
+					<td>{{x.Actor | uppercase}}</td>
+					<td>{{x.ReleaseDate | date:"dd/MM/yyyy"}}</td>
+					<td>{{x.Price | number:2 |currency:"$"}}</td>
+					<td>{{x.Likes}}</td>
+					<td>{{x.Dislikes}}</td>
+					<td><button type="button" value="like" ng-click="givelikes(x)">Like</button>
+					<button type="button" value="Dislike" ng-click="givedislikes(x)">Dislike</button></td>
+				</tr>
+				</tbody>
+			</table>
+			</div>
+	</body>
+</html>

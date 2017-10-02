@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/script3.js"></script>
+		<title>
+		Event_handling
+		</title>
+		<style>
+		table {
+				padding:0px;
+				font-family:arial;
+				border-collapse:collapse;
+			}
+			td{
+				padding:10px;
+				text-align:center;
+			}
+			tr:hover{
+				    background: #dadacc;
+
+			}
+			 th{
+				    padding: 10px;
+
+			}
+		</style>
+	</head>
+	<body ng-app="mymodule">
+		<div ng-controller="mycontroller">
+			<div>Please Enter How many rows would you like to Display:<input type="number" step=1 min=0 max=5 ng-model="limitnum"></input></div>
+			<div>Please select an option for selecting col to sort:<select ng-model="sortcol">
+																		<option value='Name'>Name Asceding</option>
+																		<option value='Price'>Price Asceding</option>
+																		<option value='Likes'>Likes Asceding</option>
+																		<option value='Dislikes'>DisLikes Asceding</option>
+																	</select></div>
+			<br>
+			<table border=1>
+				<thead>
+				<tr>
+					<th>
+						Name
+					</th>
+					<th>
+						Director
+					</th>
+					<th>
+						Actor
+					</th>
+					<th>
+						Released Date
+					</th>
+					<th>
+						Price In $
+					</th>
+					<th>
+						Likes
+					</th>
+					<th>
+						Dislikes
+					</th>
+					<th>
+						Like/Dislike
+					</th>
+				</tr>
+				</thead><!--end of the header-->
+				<tbody ng-repeat=" x in movies | limitTo:limitnum:0|orderBy:sortcol">
+				<tr>	
+					<td>{{x.Name| uppercase }}</td>
+					<td>{{x.Director | uppercase }}</td>
+					<td>{{x.Actor | uppercase}}</td>
+					<td>{{x.ReleaseDate | date:"dd/MM/yyyy"}}</td>
+					<td>{{x.Price | number:2 |currency:"$"}}</td>
+					<td>{{x.Likes}}</td>
+					<td>{{x.Dislikes}}</td>
+					<td><button type="button" value="like" ng-click="givelikes(x)">Like</button>
+					<button type="button" value="Dislike" ng-click="givedislikes(x)">Dislike</button></td>
+				</tr>
+				</tbody>
+			</table>
+			</div>
+	</body>
+</html>
