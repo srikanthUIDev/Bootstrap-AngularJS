@@ -4,8 +4,8 @@
   myapp.controller("mycontroller",function($scope){
  /* $scope.message="Hi welcome to my website";
   $scope.greeting="hello world"}); */
-  var employee={firstName:"Raghu Nayudu",
-				LastName:"Rayapudi",
+  var employee={firstName:"Srikanth",
+				LastName:"Uppena",
 				Gender:"male",
   };
   $scope.employee=employee;
